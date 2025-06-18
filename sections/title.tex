@@ -1,40 +1,48 @@
 %! TEX root = ../main.tex
 \documentclass[main]{subfiles}
+\usetikzlibrary{shapes.geometric}
 
 \begin{document}
 \begin{titlepage}
-    \fontsize{30pt}{30pt} \selectfont
+    % --- 背景の幾何学模様 (重なる円) ---
+    \begin{tikzpicture}[remember picture, overlay]
+        % ページ全体を座標として使う設定
+        \begin{scope}[shift={(current page.south west)}, x={(current page.north east)}, y={(current page.north west)}]
+            
+            % 50個の円をランダムな位置・大きさ・色で描画
+            \foreach \i in {1,...,50} {
+                % 乱数を設定
+                \pgfmathsetmacro{\randx}{rnd} % x座標 (0.0 - 1.0)
+                \pgfmathsetmacro{\randy}{rnd} % y座標 (0.0 - 1.0)
+                \pgfmathsetmacro{\randr}{1.5 + 3*rnd} % 半径 (1.5 - 4.5)
+                \pgfmathsetmacro{\randc}{20 + 40*rnd} % 色の濃さ (20 - 60)
+                \pgfmathsetmacro{\rando}{0.1 + 0.3*rnd} % 透明度 (0.1 - 0.4)
 
+                % 円を描画
+                \fill[cyan!\randc!blue, opacity=\rando] (\randx, \randy) circle (\randr cm);
+            }
+        \end{scope}
+    \end{tikzpicture}
+
+    % --- 中央のコンテンツ ---
+    % 前面のテキストが見やすいように、半透明の白い長方形を挟む
     \centering
-    令和○年度
-    \vspace{15pt}
-
-    修士学位論文
-    \vspace{45pt}
-
-    論文用テンプレート
-    \vspace{45pt}
-
-    ○○所属
-    \vspace{20pt}
-
-    ○○課程 ○○専攻
-    \vspace{20pt}
-
-    ○○分野
-    \vspace{45pt}
-
-    指導教員 ○○ ○○教授
-    \vspace{45pt}
-
-    令和○年入学
-    \vspace{15pt}
-
-    \begin{tabular}{ll}
-        学籍番号 & hoge \\
-        氏名   & fuga \\
-    \end{tabular}
-    \normalsize
-
+    \begin{tikzpicture}
+         \node[fill=white, fill opacity=0.8, text opacity=1, inner sep=1cm, minimum width=15cm, minimum height=22cm, rounded corners=5pt] {
+            \begin{minipage}{0.8\textwidth}
+                \centering
+                \vspace*{2cm}
+                {\fontsize{32pt}{40pt}\selectfont \bfseries 今週の積分 \par}
+                \vspace{1cm}
+                {\fontsize{16pt}{20pt}\selectfont - from ヨビノリたくみ - \par}
+                \vspace{6cm}
+                {\fontsize{12pt}{18pt}\selectfont 作成者： 藤川 二千翔 \par}
+                \vspace{0.5cm}
+                {\fontsize{12pt}{18pt}\selectfont 作成日： \today \par}
+                \vspace*{1cm}
+            \end{minipage}
+        };
+    \end{tikzpicture}
 \end{titlepage}
+
 \end{document}
