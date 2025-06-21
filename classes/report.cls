@@ -42,7 +42,6 @@
 \RequirePackage{type1cm} % 文字の大きさを自由に変えるためのパッケージ
 
 
-
 \ifluatex
     % LuaTeXを日本語で使うための設定
     \RequirePackage{luatexja}
@@ -86,6 +85,7 @@
 \addbibresource{references.bib}
 
 \RequirePackage{tikz} % 図を描画するためのパッケージ
+\RequirePackage[most]{tcolorbox}
 
 % \DeclareFieldFormat*{journaltitle}{\textit{#1}} % 日本語雑誌名を通常に、英語雑誌名を斜体に
 % \DeclareFieldFormat*{title}{\textit{#1}}
@@ -159,3 +159,35 @@
 
 \setcounter{tocdepth}{2}
 \setcounter{secnumdepth}{4}
+
+% 問題と解説がセットになった新しい定理環境を定義
+% \newtcbtheorem{<環境名>}{<表示名>}{<オプション>}{<接頭辞>}
+\newtcbtheorem{mondai}{問題}{
+    colback=blue!5!white,         % 問題部分の背景色
+    colframe=blue!90!black,       % 枠の色
+    fonttitle=\bfseries,           % タイトルのフォント
+    % --- 解説（下半分）部分のスタイル ---
+    colbacklower=black!5!white,  % 解説部分の背景色
+    fontlower=\small,              % 解説部分のフォントサイズ
+    bottom=5mm,                    % ボックスの下部の余白
+    % ページ下部までボックスを伸ばす設定
+    height fill,
+}{q} % 問題番号の接頭辞 (q1, q2, ...)
+
+% \newtcolorbox{<環境名>}[<引数の数>][<デフォルト引数>]{<オプション>}
+\newtcolorbox{pointbox}[1][]{
+  enhanced,
+  %halign=center,
+  colback=green!5!white,      % 背景色
+  colframe=green!60!black,    % 枠の色
+  boxrule=0.8mm,              % 枠線の太さ
+  arc=2mm,                    % 角の丸み
+  % --- タイトル部分のスタイル設定 ---
+  attach boxed title to top left={yshift=4mm-\tcboxedtitleheight, xshift=5mm},
+  title={発想},              % デフォルトのタイトル
+  fonttitle=\bfseries\sffamily, % タイトルのフォント
+  colbacktitle=green!55!white, % タイトルの背景色
+  coltitle=black,              % タイトルの文字色
+  boxed title style={arc=2mm}, % タイトルの枠の角の丸み
+  #1 % オプションの引数を渡すため
+}
