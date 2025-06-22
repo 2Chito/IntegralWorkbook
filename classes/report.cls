@@ -66,6 +66,10 @@
         % LaTeX Font: Font shape `JT2/hmc/b/n' undefine(Font)	using `JT2/hmc/m/n' instead.
         \DeclareFontShape{JT2}{hmc}{b}{n}{<->ssub*hmc/m/n}{}
 
+        \DeclareFontShape{JT2}{hgt}{b}{n}{<->ssub*hgt/eb/n}{}
+
+        \DeclareFontShape{JY2}{hgt}{b}{n}{<->ssub*hgt/bx/n}{}
+
         % 図表関連のパッケージを読み込む
         \RequirePackage{color}
         \RequirePackage[dvipdfmx]{graphicx}
