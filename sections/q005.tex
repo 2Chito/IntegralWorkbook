@@ -1,0 +1,44 @@
+%! TEX root = ../main.tex
+\documentclass[main]{subfiles}
+
+\begin{document}
+% \chapter{難易度★★}
+
+\begin{mondai}{難易度★★★}{}
+    % --- ここから問題パート（上半分） ---
+    $$\int \frac{1}{\sin x} dx$$
+    
+    % --- ここで上下を区切る ---
+    \tcblower
+
+    % --- 解説パートの先頭に「発想」を記述 ---
+    \begin{pointbox}
+        \begin{center}
+        $$f(\cos x)\cdot \sin x \rightarrow \cos x = t \text{と置換}$$
+        \end{center}
+    \end{pointbox}
+
+    % --- ここから解説パート（下半分） ---
+    \begin{align*}
+        \int \frac{1}{\sin x} dx
+            &= \int \frac{\sin x}{\sin^2 x} dx \\
+            &= \int \frac{\sin x}{1-\cos^2 x} dx
+    \end{align*}
+    \begin{tcolorbox}
+        \begin{align*}
+            t=\cos x \qquad 
+            dt=-\sin x dx
+        \end{align*}
+    \end{tcolorbox}
+    \begin{align*}
+        %\int \frac{1}{\sin x} dx
+            &= \int \frac{1}{t^2-1} dt \\
+            &= \int \frac{1}{(t-1)(t+1)} dt \\
+            &= \frac{1}{2}\int \left(\frac{1}{t-1}-\frac{1}{t+1}\right) dt \\
+            &= \frac{1}{2} \log \left|\frac{t-1}{t+1}\right|+\mathbb{C}  \\
+            &= \frac{1}{2} \log \frac{1-\cos x}{1+\cos x}+\mathbb{C} \tag{答}
+    \end{align*}
+
+\end{mondai}
+
+\end{document}
