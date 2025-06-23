@@ -11,19 +11,18 @@
 
 \pagenumbering{arabic}
 
-\subfile{sections/q001}
-\newpage
-
-\subfile{sections/q002}
-\newpage
-
-\subfile{sections/q003}
-\newpage
-
-\subfile{sections/q004}
-\newpage
-
-\subfile{sections/q005}
-\newpage
+\foreach \i in {1,...,5}{
+  % ループ変数 \i の値に応じて、ファイル名を3桁にゼロ埋めする
+  \ifnum\i<10
+    \subfile{sections/q00\i}
+  \else
+    \ifnum\i<100
+      \subfile{sections/q0\i}
+    \else
+      \subfile{sections/q\i}
+    \fi
+  \fi
+  \newpage
+}
 
 \end{document}
