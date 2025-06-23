@@ -1,0 +1,42 @@
+%! TEX root = ../main.tex
+\documentclass[main]{subfiles}
+
+\begin{document}
+\silentchapter{\texorpdfstring
+{$\sqrt{1+x^2}\text{を含む形}\rightarrow x=\frac{e^t-e^{-t}}{2} \text{と置換}$}
+{}}
+
+\begin{mondai}{難易度★★★★}{}
+    % --- ここから問題パート（上半分） ---
+    $$\int \frac{1}{\sqrt{1+x^2}} dx$$
+    
+    % --- ここで上下を区切る ---
+    \tcblower
+
+    % --- 解説パートの先頭に「発想」を記述 ---
+    \begin{pointbox}
+        \begin{center}
+        $$\sqrt{1+x^2}\text{を含む形}\rightarrow x=\frac{e^t-e^{-t}}{2} \text{と置換}$$
+        \end{center}
+    \end{pointbox}
+
+    % --- ここから解説パート（下半分） ---
+    \begin{tcolorbox}
+        \begin{align*}
+            x=\frac{e^t-e^{-t}}{2} \qquad
+            t=\log \left(x+\sqrt{x^2+1}\right) \qquad 
+            dx=\frac{e^t+e^{-t}}{2}dt
+        \end{align*}
+    \end{tcolorbox}
+    \begin{align*}
+        \int \frac{1}{\sqrt{1+x^2}} dx
+            &= \int \frac{1}{\sqrt{1+\frac{\left(e^t-e^{-t}\right)^2}{4}}} \frac{e^t+e^{-t}}{2}dt \\
+            &= \int \frac{1}{\frac{e^t+e^{-t}}{2}}\frac{e^t+e^{-t}}{2} dt \\
+            &= \int dt \\
+            &= t+\mathbb{C} \\
+            &= \log \left(x+\sqrt{x^2+1}\right)+\mathbb{C} \tag{答}
+    \end{align*}
+
+\end{mondai}
+
+\end{document}

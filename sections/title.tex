@@ -4,45 +4,60 @@
 
 \begin{document}
 \begin{titlepage}
-    % --- 背景の幾何学模様 (重なる円) ---
-    \begin{tikzpicture}[remember picture, overlay]
-        % ページ全体を座標として使う設定
-        \begin{scope}[shift={(current page.south west)}, x={(current page.north east)}, y={(current page.north west)}]
-            
-            % 50個の円をランダムな位置・大きさ・色で描画
-            \foreach \i in {1,...,50} {
-                % 乱数を設定
-                \pgfmathsetmacro{\randx}{rnd} % x座標 (0.0 - 1.0)
-                \pgfmathsetmacro{\randy}{rnd} % y座標 (0.0 - 1.0)
-                \pgfmathsetmacro{\randr}{1.5 + 3*rnd} % 半径 (1.5 - 4.5)
-                \pgfmathsetmacro{\randc}{20 + 40*rnd} % 色の濃さ (20 - 60)
-                \pgfmathsetmacro{\rando}{0.1 + 0.3*rnd} % 透明度 (0.1 - 0.4)
+    % --- 色の定義 ---
+    % 背景を黒色に変更
+    \definecolor{FGBg}{RGB}{0,0,0}
+    % ロゴ用の金色
+    \definecolor{FGgold}{RGB}{212,175,55}
 
-                % 円を描画
-                \fill[cyan!\randc!blue, opacity=\rando] (\randx, \randy) circle (\randr cm);
-            }
-        \end{scope}
-    \end{tikzpicture}
+    % ページの背景色と文字色を設定
+    \pagecolor{FGBg}
+    \color{white}
 
-    % --- 中央のコンテンツ ---
-    % 前面のテキストが見やすいように、半透明の白い長方形を挟む
+    % ページ全体のコンテンツを中央揃えに
     \centering
+
+    % 上部の余白
+    \vspace*{1cm}
+
+    % --- 金色の細い線 ---
     \begin{tikzpicture}
-         \node[fill=white, fill opacity=0.8, text opacity=1, inner sep=1cm, minimum width=15cm, minimum height=22cm, rounded corners=5pt] {
-            \begin{minipage}{0.8\textwidth}
-                \centering
-                \vspace*{2cm}
-                {\fontsize{32pt}{40pt}\selectfont \bfseries 今週の積分 \par}
-                \vspace{1cm}
-                {\fontsize{16pt}{20pt}\selectfont - from ヨビノリたくみ - \par}
-                \vspace{6cm}
-                {\fontsize{12pt}{18pt}\selectfont 作成者： 藤川 二千翔 \par}
-                \vspace{0.5cm}
-                {\fontsize{12pt}{18pt}\selectfont 作成日： \today \par}
-                \vspace*{1cm}
-            \end{minipage}
-        };
+        \draw [FGgold, line width=0.8pt] (0,0) -- (8cm, 0);
     \end{tikzpicture}
+
+    \vspace*{1cm}
+
+    % --- "Focus Gold" ロゴ ---
+    % フォントはTimes系で代用
+    {\fontfamily{qtm}\selectfont
+        {\fontsize{50}{60}\selectfont \color{FGgold} Focus Gold}
+    }
+
+    \vspace*{1cm}
+
+% --- 「今週の積分」のタイトル ---
+% フォントは原ノ味フォント（別途設定が必要な場合あり）
+{\fontsize{50}{60}\selectfont \bfseries 今週の積分}
+
+    \vspace*{5mm}
+
+    % --- 金色の細い線 ---
+    \begin{tikzpicture}
+        \draw [FGgold, line width=0.8pt] (0,0) -- (8cm, 0);
+    \end{tikzpicture}
+
+% --- 下部の余白を確保するための空白 ---
+\vfill
+
+% --- 出版社名 ---
+{\Large 啓林館}
+
+    % 下部の余白
+    \vspace*{1cm}
+
 \end{titlepage}
+
+% 次のページから背景色をリセット
+\nopagecolor
 
 \end{document}
