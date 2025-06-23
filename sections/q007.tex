@@ -1,0 +1,30 @@
+%! TEX root = ../main.tex
+\documentclass[main]{subfiles}
+
+\begin{document}
+
+\begin{newmondai}{例題}{7}{今週の積分}{**}
+    \int x\sqrt{3x-5}dx
+\end{newmondai}
+\begin{approachbox}
+$\sqrt{\quad}\rightarrow$  基本的には外す
+\end{approachbox}
+
+\solutionhead
+\hfill
+$t=\sqrt{3x-5}$とおき、置換積分する.\hfill\ 
+\begin{itembox}
+    \begin{align*}
+        t=\sqrt{3x-5} \qquad x=\frac{t^2+5}{3} \qquad dx=\frac{2t}{3}dt
+    \end{align*}
+\end{itembox}
+\begin{align*}
+    \int x\sqrt{3x-5}dx
+        &= \int\frac{t^2+5}{3}\cdot t\cdot \frac{2t}{3}dt \\
+        &= \frac{2}{9}\int\left(t^4+5t^2\right)dt \\
+        &= \frac{2}{9}\left(\frac{1}{5}t^5+\frac{5}{3}t^3\right)+\mathbb{C} \\
+        &= \frac{2}{45}t^3\left(t^2+\frac{25}{3}\right)+\mathbb{C} \\
+        &= \boldsymbol{\frac{2}{45}\left(3x-5\right)\sqrt{3x-5}\left(3x\frac{10}{3}\right)+\mathbb{C}}
+\end{align*}
+
+\end{document}

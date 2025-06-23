@@ -208,3 +208,105 @@
   \addcontentsline{toc}{chapter}{\protect\numberline{\thechapter}#1}%
 }
 %------------------------------------------------------------------
+\usetikzlibrary{tikzmark}
+\usetikzlibrary{shapes.misc}
+\usetikzlibrary{shapes.arrows}
+
+% ---「mondai」環境の定義 ---
+\newtcolorbox{mondai@outerbox}{
+    enhanced, sharp corners,
+    boxrule=1pt, colback=white,
+    boxsep=0pt, left=0pt, right=0pt, top=0pt, bottom=0pt, % 余白は内部で制御
+}
+
+% 次に、mondai環境本体を定義
+\newenvironment{newmondai}[4]{%
+    \begin{mondai@outerbox} % 外箱を開始
+    % --- ヘッダー部分 ---
+    \begin{tcolorbox}[
+        enhanced, sharp corners, boxrule=0pt, boxsep=0pt, colback=white,
+        left=2mm, right=2mm, top=2mm, bottom=-2mm, bottomrule=-1pt
+        ]
+        \hspace{1em}
+        \raisebox{3mm}{\LARGE\bfseries #1} % 問題の種類
+        \hspace{1em}
+        \begin{tcolorbox}[
+            enhanced, sharp corners, rounded corners=southeast,
+            boxrule=0.8pt, boxsep=2pt, top=3pt, bottom=3pt, left=3pt, right=3pt,
+            colback=black!10, colframe=black,
+            fontupper=\Huge\bfseries,
+            nobeforeafter, tcbox raise base,
+            width=19mm,
+            ]
+            \begin{center}#2\end{center} % 問題番号
+        \end{tcolorbox}
+        \hspace{1em}
+        \raisebox{3mm}{\LARGE\bfseries #3} % 問題タイトル
+        \hfill
+        \raisebox{1mm}{\Huge\bfseries #4} % 難易度
+    \end{tcolorbox}
+    % --- 本文エリアの開始 ---
+    % 本文エリアには上下左右に少し余白(padding)をつける
+    \begin{tcolorbox}[enhanced, sharp corners, boxrule=0pt, toprule=-1pt, borderline north={1pt}{0pt}{dashed}, colback=white, boxsep=5pt]
+    \begin{equation*}
+}{%
+    % 本文エリアの終了
+    \end{equation*}
+    \end{tcolorbox}
+    % 外箱を終了
+    \end{mondai@outerbox}
+}
+
+% --- 「考え方」ボックスのスタイル部分 ---
+\newtcolorbox{approachbox@style}{
+    colback=white, colframe=black, boxrule=1pt,
+    fonttitle=\bfseries,
+    title={考え方 ▶},
+}
+% --- 環境として定義 ---
+\newenvironment{approachbox}{%
+    \begin{approachbox@style}
+    \begin{center}
+}{%
+    \end{center}
+    \end{approachbox@style}
+}
+
+% --- 「解」の見出しコマンドを定義 ---
+\newcommand{\solutionhead}{%
+    \noindent
+    \begin{tikzpicture}[baseline=(char.base)]
+        \node[
+            shape=single arrow,    % 形の指定
+            fill=black!50,         % 背景色
+            text=white,            % 文字色
+            font=\large\bfseries,        % フォント（\largeを一旦外しました）
+            minimum height=1.8em,
+            inner xsep=0.4em,
+            inner ysep=0.4em,
+        ] (char) at (0,0) {解};
+    \end{tikzpicture}
+    \vspace{1\baselineskip}
+}
+
+% --- 「itembox」環境の定義 ---
+\newtcolorbox{itembox}{
+    enhanced,
+    width=\linewidth-10em,
+    center,                % ボックス自体を中央配置してインデント効果を出す
+    colback=white,       % 背景色
+    colframe=black,     % 枠の色
+    boxrule=0.5pt,         % 枠線の太さ
+    sharp corners,         % 角を丸めない
+    boxsep=2pt,            % 中の文章と枠の間の余白
+    top=-5mm
+}
+
+% --- 注釈用のコマンドの定義 ---
+\newcommand{\tikzarrownote}[3][]{
+    \begin{scope}[remember picture, overlay]
+        \draw[->, thick, red!80!black]
+            ([yshift=0.5\baselineskip]pic cs:#2) -- ++(1.5,0)
+            node[right, draw, rounded corners, fill=white, text width=4cm, #1] {#3};
+    \end{scope}
+}
