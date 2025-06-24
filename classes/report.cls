@@ -104,8 +104,9 @@
 \WarningFilter{caption}{Unknown document class (or package)}
 \RequirePackage{caption}
 \RequirePackage{subcaption}
-\captionsetup[figure]{labelsep=quad, labelformat=simple, name=Fig.}
-\captionsetup[subfigure]{labelsep=quad, labelformat=simple, name=Fig.}
+\captionsetup[figure]{labelsep=quad, labelformat=simple, name=図}
+\captionsetup[subfigure]{labelsep=quad, labelformat=simple, name=図}
+\renewcommand*{\thefigure}{\thechapter-\arabic{figure}}
 \renewcommand*{\thesubfigure}{(\alph{subfigure})}
 \captionsetup[table]{labelsep=quad, labelformat=simple, name=Table}
 
