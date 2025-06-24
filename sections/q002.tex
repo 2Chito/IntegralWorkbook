@@ -6,38 +6,33 @@
 {$\sqrt{\quad}\rightarrow$  基本的には外す}
 {√→基本的には外す}}
 
-\begin{mondai}{難易度★★}{}
-    % --- ここから問題パート（上半分） ---
-    $$\int ^{2\pi}_0 \sqrt{1+\cos x} dx$$
-    
-    % --- ここで上下を区切る ---
-    \tcblower
-    
-    % --- 解説パートの先頭に「発想」を記述 ---
-    \begin{pointbox}
-        \begin{center}
-        $\sqrt{\quad}\rightarrow$  基本的には外す
-        \end{center}
-    \end{pointbox}
+\begin{newmondai}{例題}{2}{今週の積分}{**}
+    \int_0^{2\pi} \sqrt{1+\cos x} dx
+\end{newmondai}
 
-    % --- ここから解説パート（下半分） ---
-    \begin{equation*}
-        \sqrt{1+\cos x} = \sqrt{2\cos ^2 \frac{x}{2}} = \sqrt{2}\left| \cos \frac{x}{2} \right| = 
-      \begin{cases}
+\approachitem{$\sqrt{\quad}\rightarrow$  基本的には外す}
+
+\solutionhead
+\hfill
+以下に計算手順を示す.
+\hfill\
+\begin{equation*}
+    \sqrt{1+\cos x} = \sqrt{2\cos ^2 \frac{x}{2}} = \sqrt{2}\left| \cos \frac{x}{2} \right| = 
+    \begin{cases}
         \sqrt{2} \cos \frac{x}{2} \qquad (0\leqq x \leqq \pi)\\
         -\sqrt{2} \cos \frac{x}{2} \qquad (\pi\leqq x \leqq 2\pi)
-      \end{cases}
-    \end{equation*}
-    よって、
-    \begin{align*}
-        \int ^{2\pi}_0 \sqrt{1+\cos x} dx
-            &= \int^\pi_0 \sqrt{2} \cos \frac{x}{2}dx + \int^{2\pi}_\pi \left(-\sqrt{2} \cos \frac{x}{2}\right)dx \\
-            &= \sqrt{2} \left\{\int^\pi_0 \cos \frac{x}{2}dx - \int^{2\pi}_\pi \cos \frac{x}{2}dx \right\} \\
-            &= \sqrt{2} \left\{ \left[ 2\sin \frac{x}{2} \right]^\pi_0 - \left[ 2\sin \frac{x}{2} \right]^{2\pi}_\pi \right\} \\
-            &= \sqrt{2} \left\{ (2-0) - (0-2) \right\} \\
-            &= 4 \sqrt{2} \tag{答}
-    \end{align*}
-    \begin{figure}[H]
+    \end{cases}
+\end{equation*}
+よって、
+\begin{align*}
+    \int ^{2\pi}_0 \sqrt{1+\cos x} dx
+        &= \int^\pi_0 \sqrt{2} \cos \frac{x}{2}dx + \int^{2\pi}_\pi \left(-\sqrt{2} \cos \frac{x}{2}\right)dx \\
+        &= \sqrt{2} \left\{\int^\pi_0 \cos \frac{x}{2}dx - \int^{2\pi}_\pi \cos \frac{x}{2}dx \right\} \\
+        &= \sqrt{2} \left\{ \left[ 2\sin \frac{x}{2} \right]^\pi_0 - \left[ 2\sin \frac{x}{2} \right]^{2\pi}_\pi \right\} \\
+        &= \sqrt{2} \left\{ (2-0) - (0-2) \right\} \\
+        &= \boldsymbol{4 \sqrt{2}}
+\end{align*}
+\begin{figure}[H]
     \centering
     \begin{tikzpicture}
         % --- 座標軸の描画 ---
@@ -85,9 +80,9 @@
     \end{tikzpicture}
     \caption{$y=\sin x$ のグラフ ($0 \le x \le 2\pi$)}
     \label{fig:sine_wave_tikz}
-    \end{figure}
+\end{figure}
 
-    \begin{figure}[H]
+\begin{figure}[H]
     \centering
     \begin{tikzpicture}
         % --- 座標軸 ---
@@ -130,6 +125,5 @@
     \caption{$y=\sqrt{1+\cos x}$ のグラフ ($0 \le x \le 2\pi$)}
     \label{fig:sqrt_cos_tikz}
 \end{figure}
-\end{mondai}
 
 \end{document}

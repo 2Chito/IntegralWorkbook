@@ -6,30 +6,32 @@
 {$\int a^xdx = \frac{a^x}{\log a}+\mathbb{C} $}
 {}}
 
-\begin{mondai}{難易度★}{}
-    % --- ここから問題パート（上半分） ---
-    $$\int_1^2 \frac{1}{2^x} dx$$
-    
-    % --- ここで上下を区切る ---
-    \tcblower
+\begin{newmondai}{例題}{4}{今週の積分}{*}
+    \int_1^2 \frac{1}{2^x} dx
+\end{newmondai}
 
-    % --- ここから解説パート（下半分） ---
-    \begin{align*}
-        \left(2^{-x}\right)'=-2^{-x}\log 2
-    \end{align*}
-    より、
-    \begin{align*}
-        \left(-\frac{2^{-x}}{\log 2}\right)'=2^{-x}
-    \end{align*}
-    \begin{align*}
-        \therefore \int_1^2 \frac{1}{2^x}dx
-            &= \int_1^2 2^{-x}dx \\
-            &= \left[ -\frac{2^{-x}}{\log 2}\right]_1^2 \\
-            &= -\frac{1}{\log 2} \left(2^{-2}-2^{-1}\right) \\
-            &= \frac{1}{4\log 2} \tag{答}
-    \end{align*}
+\approachitem{$\int a^x dx = \frac{a^x}{\log a}+\mathbb{C}$}
 
-    \begin{figure}[H]
+\solutionhead
+\hfill
+以下に計算手順を示す.
+\hfill\
+\begin{align*}
+    \left(2^{-x}\right)'=-2^{-x}\log 2
+\end{align*}
+より、
+\begin{align*}
+    \left(-\frac{2^{-x}}{\log 2}\right)'=2^{-x}
+\end{align*}
+\begin{align*}
+    \therefore \int_1^2 \frac{1}{2^x}dx
+        &= \int_1^2 2^{-x}dx \\
+        &= \left[ -\frac{2^{-x}}{\log 2}\right]_1^2 \\
+        &= -\frac{1}{\log 2} \left(2^{-2}-2^{-1}\right) \\
+        &= \boldsymbol{\frac{1}{4\log 2}}
+\end{align*}
+
+\begin{figure}[H]
     \centering
     % ★★★ 1. 新しい描画範囲(0～5)に合わせてスケールを調整 ★★★
     % x方向の1単位を2cm、y方向の1単位を5cmとして描画
@@ -72,6 +74,5 @@
     \caption{$y = \frac{1}{2^x}$ のグラフと $1 \le x \le 2$ の領域}
     \label{fig:exp_decay_filled}
 \end{figure}
-\end{mondai}
 
 \end{document}

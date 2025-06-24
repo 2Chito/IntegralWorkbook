@@ -4,27 +4,22 @@
 \begin{document}
 \silentchapter{三角関数は2乗に強い}
 
-\begin{mondai}{難易度★★}{}
-    % --- ここから問題パート（上半分） ---
-    $$\int \tan ^3 x dx$$
-    
-    % --- ここで上下を区切る ---
-    \tcblower
-    
-    % --- 解説パートの先頭に「発想」を記述 ---
-    \begin{pointbox}
-        \begin{center}
-        三角関数は2乗に強い
-        \end{center}
-    \end{pointbox}
+\begin{newmondai}{例題}{1}{今週の積分}{**}
+    \int \tan ^3 x dx
+\end{newmondai}
 
-    % --- ここから解説パート（下半分） ---
-    \begin{align*}
-        \int \tan ^3 x dx   &= \int \tan x \cdot \tan x ^2 x dx \\
-                            &= \int \tan x \left( \frac{1}{\cos ^2 x} -1 \right)  dx \\
-                            &= \int \tan x \cdot \frac{1}{\cos ^2 x} dx + \int \frac{-\sin x}{\cos x} dx \\
-                            &= \frac{1}{2} \tan ^2 x + \log \left| \cos x \right| + \mathbb{C} \tag{答}
-    \end{align*}
-\end{mondai}
+\approachitem{三角関数は2乗に強い}
+
+\solutionhead
+\hfill
+以下に計算手順を示す.
+\hfill\ 
+\begin{align*}
+    \int \tan ^3 x dx   
+        &= \int \tan x \cdot \tan x ^2 x dx \\
+        &= \int \tan x \left( \frac{1}{\cos ^2 x} -1 \right)  dx \\
+        &= \int \tan x \cdot \frac{1}{\cos ^2 x} dx + \int \frac{-\sin x}{\cos x} dx \\
+        &= \boldsymbol{\frac{1}{2} \tan ^2 x + \log \left| \cos x \right| + \mathbb{C}}
+\end{align*}
 
 \end{document}

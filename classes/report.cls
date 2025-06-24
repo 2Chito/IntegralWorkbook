@@ -263,20 +263,11 @@
     \par\noindent
     \begin{tblr}{
         width = \linewidth,
-        colspec = {Q[l,m,font=\bfseries] X[c,m]},
-        column{1} = {rightsep=1em}, % 1列目と罫線の間の余白
+        colspec = {Q[l,m,font=\bfseries] | p{130mm}},
         vline{2} = {1.2pt, solid},
     }
-        考え方 ▶ & {#1} \\
+        考え方 ▶ & \centering #1 \\
     \end{tblr}
-}
-% --- 環境として定義 ---
-\newenvironment{approachbox}{%
-    \begin{approachbox@style}
-    \begin{center}
-}{%
-    \end{center}
-    \end{approachbox@style}
 }
 
 % --- 「解」の見出しコマンドを定義 ---
@@ -286,7 +277,6 @@
     \begin{tikzpicture}[baseline=(char.base)]
     
         % --- 背景の五角形を手作業で描画 ---
-        % shape=... を使わず、5つの頂点を直接結んで塗りつぶす
         \fill[black!60,rounded corners=2pt]
             (1.5em, 0em)  -- % 1. 右端の頂点（矢印の先端）
             (0.7em, 0.8em)  -- % 2. 右上の頂点
@@ -302,7 +292,7 @@
     \end{tikzpicture}
 }
 
-% --- ステップ1: itemboxの「見た目」だけを定義するスタイルを作成 ---
+% --- itemboxのスタイルを作成 ---
 \newtcolorbox{itembox@style}{
     enhanced,
     width=\linewidth-10em,
@@ -317,7 +307,7 @@
     after skip=0pt,        % ボックスの後の垂直な空白
 }
 
-% --- ステップ2: 数式を引数として受け取る新しいコマンド \Itembox を定義 ---
+% --- \Itembox を定義 ---
 % 使い方： \Itembox{ align* の中身をここに書く }
 \newcommand{\Itembox}[1]{%
     \begin{itembox@style}
