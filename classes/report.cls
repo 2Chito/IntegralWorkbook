@@ -210,7 +210,6 @@
 %------------------------------------------------------------------
 \usetikzlibrary{tikzmark}
 \usetikzlibrary{shapes.misc}
-\usetikzlibrary{shapes.arrows}
 
 % ---「mondai」環境の定義 ---
 \newtcolorbox{mondai@outerbox}{
@@ -231,7 +230,7 @@
         \raisebox{3mm}{\LARGE\bfseries #1} % 問題の種類
         \hspace{1em}
         \begin{tcolorbox}[
-            enhanced, sharp corners, rounded corners=southeast,
+            enhanced, sharp corners,
             boxrule=0.8pt, boxsep=2pt, top=3pt, bottom=3pt, left=3pt, right=3pt,
             colback=black!10, colframe=black,
             fontupper=\Huge\bfseries,
@@ -244,6 +243,7 @@
         \raisebox{3mm}{\LARGE\bfseries #3} % 問題タイトル
         \hfill
         \raisebox{1mm}{\Huge\bfseries #4} % 難易度
+        \hspace{1em}
     \end{tcolorbox}
     % --- 本文エリアの開始 ---
     % 本文エリアには上下左右に少し余白(padding)をつける
@@ -257,11 +257,18 @@
     \end{mondai@outerbox}
 }
 
-% --- 「考え方」ボックスのスタイル部分 ---
-\newtcolorbox{approachbox@style}{
-    colback=white, colframe=black, boxrule=1pt,
-    fonttitle=\bfseries,
-    title={考え方 ▶},
+% --- 「考え方」の各項目を表示するための新しいコマンド ---
+% 使い方： \approachitem{ここに右側の列の文章を入れる}
+\newcommand{\approachitem}[1]{%
+    \par\noindent
+    \begin{tblr}{
+        width = \linewidth,
+        colspec = {Q[l,m,font=\bfseries] X[c,m]},
+        column{1} = {rightsep=1em}, % 1列目と罫線の間の余白
+        vline{2} = {1.2pt, solid},
+    }
+        考え方 ▶ & {#1} \\
+    \end{tblr}
 }
 % --- 環境として定義 ---
 \newenvironment{approachbox}{%
@@ -274,39 +281,48 @@
 
 % --- 「解」の見出しコマンドを定義 ---
 \newcommand{\solutionhead}{%
+    \vspace{3mm}
     \noindent
     \begin{tikzpicture}[baseline=(char.base)]
-        \node[
-            shape=single arrow,    % 形の指定
-            fill=black!50,         % 背景色
-            text=white,            % 文字色
-            font=\large\bfseries,        % フォント（\largeを一旦外しました）
-            minimum height=1.8em,
-            inner xsep=0.4em,
-            inner ysep=0.4em,
-        ] (char) at (0,0) {解};
+    
+        % --- 背景の五角形を手作業で描画 ---
+        % shape=... を使わず、5つの頂点を直接結んで塗りつぶす
+        \fill[black!60,rounded corners=2pt]
+            (1.5em, 0em)  -- % 1. 右端の頂点（矢印の先端）
+            (0.7em, 0.8em)  -- % 2. 右上の頂点
+            (-1.0em, 0.8em) -- % 3. 左上の頂点
+            (-1.0em, -0.8em)-- % 4. 左下の頂点
+            (0.7em, -0.8em) -- % 5. 右下の頂点
+            cycle;
+            
+        % --- 「解」の文字を上から重ねる ---
+        % テキストを置くだけの、オプションが非常に少ないシンプルなnode
+        \node[text=white, font=\large\bfseries] (char) at (0,0) {解};
+        
     \end{tikzpicture}
-    \vspace{1\baselineskip}
 }
 
-% --- 「itembox」環境の定義 ---
-\newtcolorbox{itembox}{
+% --- ステップ1: itemboxの「見た目」だけを定義するスタイルを作成 ---
+\newtcolorbox{itembox@style}{
     enhanced,
     width=\linewidth-10em,
     center,                % ボックス自体を中央配置してインデント効果を出す
-    colback=white,       % 背景色
-    colframe=black,     % 枠の色
-    boxrule=0.5pt,         % 枠線の太さ
-    sharp corners,         % 角を丸めない
-    boxsep=2pt,            % 中の文章と枠の間の余白
-    top=-5mm
+    colback=white,
+    colframe=black,
+    boxrule=0.5pt,
+    sharp corners,
+    boxsep=4pt,
+    top=-5mm,
+    before skip=3mm,       % ボックスの前の垂直な空白
+    after skip=0pt,        % ボックスの後の垂直な空白
 }
 
-% --- 注釈用のコマンドの定義 ---
-\newcommand{\tikzarrownote}[3][]{
-    \begin{scope}[remember picture, overlay]
-        \draw[->, thick, red!80!black]
-            ([yshift=0.5\baselineskip]pic cs:#2) -- ++(1.5,0)
-            node[right, draw, rounded corners, fill=white, text width=4cm, #1] {#3};
-    \end{scope}
+% --- ステップ2: 数式を引数として受け取る新しいコマンド \Itembox を定義 ---
+% 使い方： \Itembox{ align* の中身をここに書く }
+\newcommand{\Itembox}[1]{%
+    \begin{itembox@style}
+        \begin{align*}
+            #1
+        \end{align*}
+    \end{itembox@style}
 }

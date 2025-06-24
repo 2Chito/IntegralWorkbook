@@ -6,18 +6,16 @@
 \begin{newmondai}{例題}{7}{今週の積分}{**}
     \int x\sqrt{3x-5}dx
 \end{newmondai}
-\begin{approachbox}
-$\sqrt{\quad}\rightarrow$  基本的には外す
-\end{approachbox}
+\approachitem{$\sqrt{\quad}\rightarrow$  基本的には外す}
 
 \solutionhead
 \hfill
 $t=\sqrt{3x-5}$とおき、置換積分する.\hfill\ 
-\begin{itembox}
-    \begin{align*}
-        t=\sqrt{3x-5} \qquad x=\frac{t^2+5}{3} \qquad dx=\frac{2t}{3}dt
-    \end{align*}
-\end{itembox}
+
+\Itembox{
+    t=\sqrt{3x-5} \qquad x=\frac{t^2+5}{3} \qquad dx=\frac{2t}{3}dt
+}
+
 \begin{align*}
     \int x\sqrt{3x-5}dx
         &= \int\frac{t^2+5}{3}\cdot t\cdot \frac{2t}{3}dt \\
