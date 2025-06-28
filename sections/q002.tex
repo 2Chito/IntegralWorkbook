@@ -12,11 +12,11 @@
     \end{align*}
 \end{mondai}
 
-\approachitem{$\sqrt{\quad}\rightarrow$  基本的には外す}
+\approachitem{$\sqrt{\quad}$を含まないように変形する．}
 
 \solutionhead
 \hfill
-以下に計算手順を示す.
+以下に計算手順を示す．
 \hfill\
 \begin{equation*}
     \sqrt{1+\cos x} = \sqrt{2\cos ^2 \frac{x}{2}} = \sqrt{2}\left| \cos \frac{x}{2} \right| = 
@@ -36,39 +36,35 @@
 \end{align*}
 \begin{figure}[H]
     \centering
-    \begin{tikzpicture}
-        % --- 座標軸の描画 ---
-        % x軸 (矢印付き)
+    \begin{minipage}[t]{0.45\linewidth}
+    \begin{tikzpicture}[scale=0.9]
+        % --- 座標軸 ---
         \draw[->, thick] (-0.2,0) -- (7,0) node[below] {$x$};
-        % y軸 (矢印付き)
-        \draw[->, thick] (0,-1.5) -- (0,1.5) node[left] {$y$};
+        \draw[->, thick] (0,-0.2) -- (0,2) node[left] {$y$};
 
-        % --- グリッド線の描画 ---
+        % --- グリッド線 ---
         \draw[gray, thin, dashed] (0,1) -- (6.28,1);
-        \draw[gray, thin, dashed] (0,-1) -- (6.28,-1);
+        \draw[gray, thin, dashed] (0,1.414) -- (6.28,1.414);
 
-        % --- 目盛りの描画 ---
-        % x軸の目盛りとラベル
-        % \foreach <変数>/<ラベル> in {<値1>/<ラベル1>, <値2>/<ラベル2>, ...}
+        % --- 目盛り ---
+        % x軸
         \foreach \x/\label in {1.5708/\frac{\pi}{2}, 3.14159/\pi, 4.71238/\frac{3\pi}{2}, 6.28318/2\pi} {
             \draw (\x, 2pt) -- (\x, -2pt) node[below, font=\small] {$\label$};
         }
-        \node[below left, font=\small] at (0,0) {$0$}; % 原点のラベル
-
-        % y軸の目盛りとラベル
-        \foreach \y in {-1, 1} {
-            \draw (2pt, \y) -- (-2pt, \y) node[left] {$\y$};
-        }
+        \node[below left, font=\small] at (0,0) {$0$};
+        % y軸
+        \draw (2pt, 1) -- (-2pt, 1) node[left] {$1$};
+        \draw (2pt, 1.414) -- (-2pt, 1.414) node[left] {$\sqrt{2}$};
 
         % ★★★ 1. 0からπまでの領域を塗りつぶす ★★★
         % グラフの線を描く前に塗りつぶしを行う
-        \fill[blue!20] (0,0) -- plot[domain=0:pi, smooth, variable=\x] ({\x}, {sin(\x r)}) -- (pi,0) -- cycle;
+        \fill[blue!20] (pi/2,0) -- plot[domain=pi/2:pi, smooth, variable=\x] ({\x}, {sin(\x r)}) -- (pi,0) -- cycle;
 
         % --- 正弦波のプロット ---
         % 【重要】TikZのsin()は角度(度)を引数に取るため、
         % ラジアンの変数 \x の後ろに 'r' を付けて度に変換します。
         \draw[
-            domain=0:2*pi,      % 定義域 (0から2πまで)
+            domain=0:pi,      % 定義域 (0から2πまで)
             smooth,             % 滑らかな線で描画
             variable=\x,        % 変数を\xとする
             blue,               % 色を青に
@@ -77,16 +73,16 @@
 
         % ★★★ 2. 塗りつぶした領域にテキストを描画 ★★★
         % 座標 (π/2, 0.7) あたりにノードを配置
-        \node[font=\large] at (1.57, 0.5) {$2$};
+        \node[font=\large] at (2.2, 0.4) {$1$};
 
     \end{tikzpicture}
-    \caption{$y=\sin x$ のグラフ ($0 \le x \le 2\pi$)}
+    \caption{$y=\sin x$ ($0 \le x \le \pi$)}
     \label{fig:sine_wave_tikz}
-\end{figure}
-
-\begin{figure}[H]
+\end{minipage}
+  \hspace{0.05\linewidth} % 間の余白（調整可能）
+  \begin{minipage}[t]{0.45\linewidth}
     \centering
-    \begin{tikzpicture}
+    \begin{tikzpicture}[scale=0.9]
         % --- 座標軸 ---
         \draw[->, thick] (-0.2,0) -- (7,0) node[below] {$x$};
         \draw[->, thick] (0,-0.2) -- (0,2) node[left] {$y$};
@@ -124,8 +120,14 @@
         \node[font=\large] at (1, 0.7) {$2\sqrt{2}$};
 
     \end{tikzpicture}
-    \caption{$y=\sqrt{1+\cos x}$ のグラフ ($0 \le x \le 2\pi$)}
+    \caption{$y=\sqrt{1+\cos x}$ ($0 \le x \le 2\pi$)}
     \label{fig:sqrt_cos_tikz}
+    \end{minipage}
 \end{figure}
+
+\begin{focusbox}
+\centering
+\textbf{$\sqrt{\quad}\rightarrow$  基本的には外す}
+\end{focusbox}
 
 \end{document}
