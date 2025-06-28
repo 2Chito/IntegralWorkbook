@@ -204,7 +204,7 @@
     \node[anchor=north east, font=\Huge, xshift=-7mm, yshift=-2mm] 
       at (frame.north east) {#3};
     % 点線
-    \draw[dashed] ([xshift=2mm,yshift=-11mm]frame.north west) -- ([xshift=-2mm,yshift=-11mm]frame.north east);
+    \draw[dashed] ([xshift=5mm,yshift=-11mm]frame.north west) -- ([xshift=-5mm,yshift=-11mm]frame.north east);
   },
   valign=top,
   before upper={\par\vspace{1.2em}},
