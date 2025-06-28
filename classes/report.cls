@@ -167,38 +167,6 @@
 \setcounter{tocdepth}{2}
 \setcounter{secnumdepth}{4}
 
-% 問題と解説がセットになった新しい定理環境を定義
-% \newtcbtheorem{<環境名>}{<表示名>}{<オプション>}{<接頭辞>}
-\newtcbtheorem{mondai}{問題}{
-    colback=blue!5!white,         % 問題部分の背景色
-    colframe=blue!90!black,       % 枠の色
-    fonttitle=\bfseries,           % タイトルのフォント
-    % --- 解説（下半分）部分のスタイル ---
-    colbacklower=black!5!white,  % 解説部分の背景色
-    fontlower=\small,              % 解説部分のフォントサイズ
-    bottom=5mm,                    % ボックスの下部の余白
-    % ページ下部までボックスを伸ばす設定
-    height fill,
-}{q} % 問題番号の接頭辞 (q1, q2, ...)
-
-% \newtcolorbox{<環境名>}[<引数の数>][<デフォルト引数>]{<オプション>}
-\newtcolorbox{pointbox}[1][]{
-  enhanced,
-  %halign=center,
-  colback=green!5!white,      % 背景色
-  colframe=green!60!black,    % 枠の色
-  boxrule=0.8mm,              % 枠線の太さ
-  arc=2mm,                    % 角の丸み
-  % --- タイトル部分のスタイル設定 ---
-  attach boxed title to top left={yshift=4mm-\tcboxedtitleheight, xshift=5mm},
-  title={発想},              % デフォルトのタイトル
-  fonttitle=\bfseries\sffamily, % タイトルのフォント
-  colbacktitle=green!55!white, % タイトルの背景色
-  coltitle=black,              % タイトルの文字色
-  boxed title style={arc=2mm}, % タイトルの枠の角の丸み
-  #1 % オプションの引数を渡すため
-}
-
 % ★★★ 目次には表示するが、ページには表示しない章コマンドを新しく定義 ★★★
 %------------------------------------------------------------------
 \newcommand{\silentchapter}[1]{%
@@ -211,51 +179,36 @@
 %------------------------------------------------------------------
 \usetikzlibrary{tikzmark}
 \usetikzlibrary{shapes.misc}
+\usetikzlibrary{calc}
 
-% ---「mondai」環境の定義 ---
-\newtcolorbox{mondai@outerbox}{
-    enhanced, sharp corners,
-    boxrule=1pt, colback=white,
-    boxsep=0pt, left=0pt, right=0pt, top=0pt, bottom=0pt, % 余白は内部で制御
-}
-
-% 次に、mondai環境本体を定義
-\newenvironment{newmondai}[4]{%
-    \begin{mondai@outerbox} % 外箱を開始
-    % --- ヘッダー部分 ---
-    \begin{tcolorbox}[
-        enhanced, sharp corners, boxrule=0pt, boxsep=0pt, colback=white,
-        left=2mm, right=2mm, top=2mm, bottom=-2mm, bottomrule=-1pt
-        ]
-        \hspace{1em}
-        \raisebox{3mm}{\LARGE\bfseries #1} % 問題の種類
-        \hspace{1em}
-        \begin{tcolorbox}[
-            enhanced, sharp corners,
-            boxrule=0.8pt, boxsep=2pt, top=3pt, bottom=3pt, left=3pt, right=3pt,
-            colback=black!10, colframe=black,
-            fontupper=\Huge\bfseries,
-            nobeforeafter, tcbox raise base,
-            width=19mm,
-            ]
-            \begin{center}#2\end{center} % 問題番号
-        \end{tcolorbox}
-        \hspace{1em}
-        \raisebox{3mm}{\LARGE\bfseries #3} % 問題タイトル
-        \hfill
-        \raisebox{1mm}{\Huge\bfseries #4} % 難易度
-        \hspace{1em}
-    \end{tcolorbox}
-    % --- 本文エリアの開始 ---
-    % 本文エリアには上下左右に少し余白(padding)をつける
-    \begin{tcolorbox}[enhanced, sharp corners, boxrule=0pt, toprule=-1pt, borderline north={1pt}{0pt}{dashed}, colback=white, boxsep=5pt]
-    \begin{equation*}
-}{%
-    % 本文エリアの終了
-    \end{equation*}
-    \end{tcolorbox}
-    % 外箱を終了
-    \end{mondai@outerbox}
+\newtcolorbox{mondai}[3]{% #1=番号, #2=単元名, #3=難易度
+  enhanced,
+  breakable,
+  colback=white,
+  colframe=black,
+  boxrule=0.8pt,
+  arc=1mm,
+  width=\textwidth,
+  before skip=10pt,
+  after skip=10pt,
+  top=3pt,
+  bottom=3pt,
+  left=5pt,
+  right=5pt,
+  overlay={
+    \node[anchor=north west, font=\gtfamily\large] at ([xshift=7mm,yshift=-2mm]frame.north west) {例 題};
+    \node[anchor=north west, font=\gtfamily\huge\selectfont, text width=1.3cm, align=center, fill=black!20, inner sep=2.7mm] 
+      at ([xshift=23mm,yshift=-0.2mm]frame.north west) {#1};
+    \node[anchor=north west, font=\gtfamily\large, text width=10cm] 
+      at ([xshift=45mm,yshift=-2mm]frame.north west) {#2};
+    \node[anchor=north east, font=\Huge, xshift=-7mm, yshift=-2mm] 
+      at (frame.north east) {#3};
+    % 点線
+    \draw[dashed] ([xshift=2mm,yshift=-11mm]frame.north west) -- ([xshift=-2mm,yshift=-11mm]frame.north east);
+  },
+  valign=top,
+  before upper={\par\vspace{1.2em}},
+  fontupper=\gtfamily\normalsize,
 }
 
 % --- 「考え方」の各項目を表示するための新しいコマンド ---
@@ -265,7 +218,7 @@
     \begin{tblr}{
         width = \linewidth,
         colspec = {Q[l,m,font=\bfseries] | p{130mm}},
-        vline{2} = {1.2pt, solid},
+        vline{2} = {2pt, solid},
     }
         考え方 ▶ & \centering #1 \\
     \end{tblr}
@@ -275,20 +228,21 @@
 \newcommand{\solutionhead}{%
     \vspace{3mm}
     \noindent
+    \hspace{1mm}
     \begin{tikzpicture}[baseline=(char.base)]
     
         % --- 背景の五角形を手作業で描画 ---
         \fill[black!60,rounded corners=2pt]
-            (1.5em, 0em)  -- % 1. 右端の頂点（矢印の先端）
-            (0.7em, 0.8em)  -- % 2. 右上の頂点
-            (-1.0em, 0.8em) -- % 3. 左上の頂点
-            (-1.0em, -0.8em)-- % 4. 左下の頂点
-            (0.7em, -0.8em) -- % 5. 右下の頂点
+            (2.5em, 0em)  -- % 1. 右端の頂点（矢印の先端）
+            (1.7em, 1.0em)  -- % 2. 右上の頂点
+            (-1.0em, 1.0em) -- % 3. 左上の頂点
+            (-1.0em, -1.0em)-- % 4. 左下の頂点
+            (1.7em, -1.0em) -- % 5. 右下の頂点
             cycle;
             
         % --- 「解」の文字を上から重ねる ---
         % テキストを置くだけの、オプションが非常に少ないシンプルなnode
-        \node[text=white, font=\large\bfseries] (char) at (0,0) {解};
+        \node[text=white, font=\Large\bfseries] (char) at (0.2,0) {解};
         
     \end{tikzpicture}
 }
@@ -316,4 +270,39 @@
             #1
         \end{align*}
     \end{itembox@style}
+}
+
+% --- 新しい「Focus」ポイント用のボックス環境を定義 ---
+% 使い方： \begin{focuspoint} (ここに本文) \end{focuspoint}
+\newtcolorbox{focusbox}{
+  enhanced,
+  colback=white,
+  colframe=black,
+  boxrule=0.8pt,
+  left=2mm,
+  right=2mm,
+  top=2mm,
+  bottom=2mm,
+  before skip=10pt,
+  after skip=10pt,
+  sharp corners,
+  width=\dimexpr\linewidth-4mm\relax,
+  enlarge left by=4mm, % 左に4mm余白
+  fontupper=\sffamily,
+  overlay={
+    % F：赤背景 + 下右の黒線
+    \node[anchor=south west, fill=red!70, text=white, font=\rmfamily,
+          minimum width=4mm, minimum height=4mm, inner sep=1pt,
+          path picture={
+            \draw[line width=1.5pt, black]
+              (path picture bounding box.south west) -- (path picture bounding box.south east);
+            \draw[line width=1.5pt, black]
+              (path picture bounding box.south east) -- (path picture bounding box.north east);
+          }]
+          at ([xshift=-3.8mm, yshift=-0.35mm]frame.north west) {F};
+
+    % ocus文字
+    \node[anchor=base west, font=\rmfamily, text=black]
+          at ([xshift=-1mm, yshift=0.5mm]frame.north west) {ocus};
+  },
 }
