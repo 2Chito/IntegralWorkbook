@@ -37,18 +37,18 @@
 \begin{figure}[H]
     \centering
     \begin{minipage}[t]{0.45\linewidth}
-    \begin{tikzpicture}[scale=0.9]
+    \begin{tikzpicture}[scale=1.5]
         % --- 座標軸 ---
-        \draw[->, thick] (-0.2,0) -- (7,0) node[below] {$x$};
+        \draw[->, thick] (-0.2,0) -- (4,0) node[below] {$x$};
         \draw[->, thick] (0,-0.2) -- (0,2) node[left] {$y$};
 
         % --- グリッド線 ---
-        \draw[gray, thin, dashed] (0,1) -- (6.28,1);
-        \draw[gray, thin, dashed] (0,1.414) -- (6.28,1.414);
+        \draw[gray, thin, dashed] (0,1) -- (3.14,1);
+        \draw[gray, thin, dashed] (0,1.414) -- (3.14,1.414);
 
         % --- 目盛り ---
         % x軸
-        \foreach \x/\label in {1.5708/\frac{\pi}{2}, 3.14159/\pi, 4.71238/\frac{3\pi}{2}, 6.28318/2\pi} {
+        \foreach \x/\label in {1.5708/\frac{\pi}{2}, 3.14159/\pi} {
             \draw (\x, 2pt) -- (\x, -2pt) node[below, font=\small] {$\label$};
         }
         \node[below left, font=\small] at (0,0) {$0$};
@@ -82,18 +82,18 @@
   \hspace{0.05\linewidth} % 間の余白（調整可能）
   \begin{minipage}[t]{0.45\linewidth}
     \centering
-    \begin{tikzpicture}[scale=0.9]
+    \begin{tikzpicture}[scale=1.5]
         % --- 座標軸 ---
-        \draw[->, thick] (-0.2,0) -- (7,0) node[below] {$x$};
+        \draw[->, thick] (-0.2,0) -- (4,0) node[below] {$x$};
         \draw[->, thick] (0,-0.2) -- (0,2) node[left] {$y$};
 
         % --- グリッド線 ---
-        \draw[gray, thin, dashed] (0,1) -- (6.28,1);
-        \draw[gray, thin, dashed] (0,1.414) -- (6.28,1.414);
+        \draw[gray, thin, dashed] (0,1) -- (3.14,1);
+        \draw[gray, thin, dashed] (0,1.414) -- (3.14,1.414);
 
         % --- 目盛り ---
         % x軸
-        \foreach \x/\label in {1.5708/\frac{\pi}{2}, 3.14159/\pi, 4.71238/\frac{3\pi}{2}, 6.28318/2\pi} {
+        \foreach \x/\label in {1.5708/\frac{\pi}{2}, 3.14159/\pi} {
             \draw (\x, 2pt) -- (\x, -2pt) node[below, font=\small] {$\label$};
         }
         \node[below left, font=\small] at (0,0) {$0$};
@@ -108,7 +108,7 @@
         % --- グラフのプロット ---
         % 【重要】cos()も度数法のため、ラジアンの \x に 'r' をつけて変換
         \draw[
-            domain=0:2*pi,
+            domain=0:pi,
             smooth,
             variable=\x,
             red,
