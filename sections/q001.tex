@@ -6,11 +6,11 @@
 
 \begin{mondai}{1}{今週の積分}{**}
     \begin{align*}
-        \int \tan ^3 x dx
+        \int \tan^3 x dx
     \end{align*}
 \end{mondai}
 
-\approachitem{三角関数は2乗に強い}
+\approachitem{三角関数の3乗以上の積分は難しいため，2乗以下に変形する．}
 
 \solutionhead
 \hfill
@@ -20,8 +20,14 @@
     \int \tan ^3 x dx   
         &= \int \tan x \cdot \tan x ^2 x dx \\
         &= \int \tan x \left( \frac{1}{\cos ^2 x} -1 \right)  dx \\
-        &= \int \tan x \cdot \frac{1}{\cos ^2 x} dx + \int \frac{-\sin x}{\cos x} dx \\
+        &= \int \tan x \cdot \frac{1}{\cos ^2 x} dx - \int \frac{\sin x}{\cos x} dx \\
+        &= \int \tan x \cdot \left(\tan x\right)' dx + \int \frac{\left(\cos x\right)'}{\cos x} dx \\
         &= \boldsymbol{\frac{1}{2} \tan ^2 x + \log \left| \cos x \right| + \mathbb{C}}
 \end{align*}
+
+\begin{focusbox}
+\centering
+\textbf{三角関数は2乗に強い}
+\end{focusbox}
 
 \end{document}
