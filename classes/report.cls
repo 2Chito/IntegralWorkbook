@@ -257,7 +257,7 @@
     boxrule=0.5pt,
     sharp corners,
     boxsep=4pt,
-    top=-5mm,
+    top=-2.5mm,
     before skip=3mm,       % ボックスの前の垂直な空白
     after skip=0pt,        % ボックスの後の垂直な空白
 }
@@ -266,9 +266,13 @@
 % 使い方： \Itembox{ align* の中身をここに書く }
 \newcommand{\Itembox}[1]{%
     \begin{itembox@style}
-        \begin{align*}
-            #1
-        \end{align*}
+        \vspace{-5pt} % 上余白の調整（任意で調整）
+        \begin{minipage}[c]{\linewidth}
+            \begin{align*}
+                #1
+            \end{align*}
+        \end{minipage}
+        \vspace{-5pt} % 下余白の調整（任意で調整）
     \end{itembox@style}
 }
 
