@@ -8,7 +8,7 @@
 
 \begin{mondai}{3}{今週の積分}{****}
     \begin{align*}
-        \int_0^1 \sqrt{\frac{1-x}{1+x}} dx
+        \int_0^1 \sqrt{\frac{1-x}{1+x}} \, dx
     \end{align*}
 \end{mondai}
 
@@ -24,12 +24,12 @@
         $x$ & $0$ & $\rightarrow$ & $1$ \\ \hline
         $t$ & $1$ & $\rightarrow$ & $0$ \\
     \end{tabular} \qquad
-    dx=-\frac{4t}{(1+t^2)^2}dt
+    dx=-\frac{4t}{(1+t^2)^2} \, dt
 }
 \begin{align*}
-    \int ^1_0 \sqrt{\frac{1-x}{1+x}} dx
-        = \int ^0_1 t \left\{ -\frac{4t}{(1+t^2)^2}dt \right\}
-        = 4 \int ^1_0 \frac{t^2}{(1+t^2)^2}dt
+    \int ^1_0 \sqrt{\frac{1-x}{1+x}} \, dx
+        = \int ^0_1 t \left\{ -\frac{4t}{(1+t^2)^2} \, dt \right\}
+        = 4 \int ^1_0 \frac{t^2}{(1+t^2)^2} \, dt
 \end{align*}
 \Itembox{
     t=\tan\theta \qquad 
@@ -37,13 +37,13 @@
         $t$ & $0$ & $\rightarrow$ & $1$ \\ \hline
         $\theta$ & $0$ & $\rightarrow$ & $\frac{\pi}{4}$ \\
     \end{tabular} \qquad
-    dt=\frac{1}{\cos^2\theta}d\theta
+    dt=\frac{1}{\cos^2\theta} \, d\theta
 }
 \begin{align*}
     %4 \int ^1_0 \frac{t^2}{(1+t^2)^2}dt
         &= 4\int^{\frac{\pi}{4}}_0 \tan^2\theta\cos^4\theta\cdot\frac{d\theta}{\cos^2\theta}
-        = 4\int^{\frac{\pi}{4}}_0 \sin^2\theta d\theta \\
-        &= 2\int^{\frac{\pi}{4}}_0 \left(1-\cos 2\theta\right) d\theta
+        = 4\int^{\frac{\pi}{4}}_0 \sin^2\theta \, d\theta \\
+        &= 2\int^{\frac{\pi}{4}}_0 \left(1-\cos 2\theta\right) \, d\theta
         = 2\left[ \theta-\frac{1}{2}\sin 2\theta \right]_0^{\frac{\pi}{4}}
         = 2\left( \frac{\pi}{4}-\frac{1}{2} \right)
         = \boldsymbol{\frac{\pi}{2}-1}

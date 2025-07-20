@@ -8,7 +8,7 @@
 
 \begin{mondai}{10}{今週の積分}{***}
     \begin{align*}
-        \int_{0}^{2} \frac{3x^3 + 12x + 1}{x^2 + 4} dx
+        \int_{0}^{2} \frac{3x^3 + 12x + 1}{x^2 + 4} \, dx
     \end{align*}
 \end{mondai}
 
@@ -20,8 +20,8 @@
 \hfill\
 
 \begin{align*}
-\int_{0}^{2} \frac{3x^3 + 12x + 1}{x^2 + 4} dx &= \int_{0}^{2} \frac{3x(x^2+4)+1}{x^2+4} dx \\
-&= 3\int_{0}^{2} x \, dx + \int_{0}^{2} \frac{1}{x^2+4} dx
+\int_{0}^{2} \frac{3x^3 + 12x + 1}{x^2 + 4} \, dx &= \int_{0}^{2} \frac{3x(x^2+4)+1}{x^2+4} \, dx \\
+&= 3\int_{0}^{2} x \, dx + \int_{0}^{2} \frac{1}{x^2+4} \, dx
 \end{align*}
 
 \Itembox{
@@ -30,13 +30,13 @@
         $x$ & $0$ & $\rightarrow$ & $2$ \\ \hline
         $\theta$ & $0$ & $\rightarrow$ & $\frac{\pi}{4}$ \\
     \end{tabular} \qquad
-    dx = \frac{2}{\cos^2\theta} d\theta
+    dx = \frac{2}{\cos^2\theta} \, d\theta
 }
 
 \begin{align*}
-&= 3 \left[ \frac{x^2}{2} \right]_{0}^{2} + \int_{0}^{\frac{\pi}{4}} \frac{1}{4(\tan^2\theta+1)} \cdot \frac{2}{\cos^2\theta} d\theta \\
-&= 6 + \frac{1}{2} \int_{0}^{\frac{\pi}{4}} d\theta \\
-&= 6 + \frac{\pi}{8}
+&= 3 \left[ \frac{x^2}{2} \right]_{0}^{2} + \int_{0}^{\frac{\pi}{4}} \frac{1}{4(\tan^2\theta+1)} \cdot \frac{2}{\cos^2\theta} \, d\theta \\
+&= 6 + \frac{1}{2} \int_{0}^{\frac{\pi}{4}} \, d\theta \\
+&= \boldsymbol{6 + \frac{\pi}{8}}
 \end{align*}
 
 \begin{figure}[H]

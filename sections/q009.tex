@@ -8,11 +8,11 @@
 
 \begin{mondai}{9}{今週の積分}{**}
     \begin{align*}
-        \int (\log x)^2 dx
+        \int (\log x)^2 \, dx
     \end{align*}
 \end{mondai}
 
-\approachitem{$\int 1 \cdot (\log x)^2 dx$と考え，部分積分する．}
+\approachitem{$\int 1 \cdot (\log x)^2 \, dx$と考え，部分積分する．}
 
 \solutionhead
 \hfill
@@ -20,11 +20,11 @@
 \hfill\
 
 \begin{align*}
-\int (\log x)^2 dx &= \int 1 \cdot (\log x)^2 dx \\
-&= x(\log x)^2 - \int x \cdot 2 \log x \cdot \frac{1}{x} dx \\
-&= x(\log x)^2 - 2 \int 1\cdot \log x dx \\
-&= x(\log x)^2 - 2 \left( x \log x - \int x \cdot \frac{1}{x} dx \right) \\
-&= x(\log x)^2 - 2(x \log x - x) + C
+\int (\log x)^2 \, dx &= \int 1 \cdot (\log x)^2 \, dx \\
+&= x(\log x)^2 - \int x \cdot 2 \log x \cdot \frac{1}{x} \, dx \\
+&= x(\log x)^2 - 2 \int 1\cdot \log x \, dx \\
+&= x(\log x)^2 - 2 \left( x \log x - \int x \cdot \frac{1}{x} \, dx \right) \\
+&= \boldsymbol{x(\log x)^2 - 2(x \log x - x) + C \quad (C:\textbf{積分定数})}
 \end{align*}
 
 \begin{focusbox}

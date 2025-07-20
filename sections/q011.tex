@@ -1,0 +1,44 @@
+%! TEX root = ../main.tex
+\documentclass[main]{subfiles}
+
+\begin{document}
+\silentchapter{\texorpdfstring
+{$\log x \rightarrow$ 部分積分×
+$\rightarrow t = \log x$ と置換
+$\rightarrow$ 指数関数型へ}
+{}}
+
+\begin{mondai}{11}{今週の積分}{**}
+    \begin{align*}
+        \int \frac{1}{x(1+\log x)} \, dx
+    \end{align*}
+\end{mondai}
+
+\approachitem{$\log x$とその微分$\frac{1}{x}$が式の中に含まれていることに注目し，置換積分する．}
+
+\solutionhead
+\hfill
+以下に計算手順を示す.
+\hfill\
+
+\Itembox{
+    t = \log x \qquad 
+    dt = \frac{1}{x} \, dx \qquad
+    dx = e^t \, dt
+}
+
+\begin{align*}
+\int \frac{1}{x(1+\log x)} \, dx &= \int \frac{1}{1+t} \, dt \\
+&= \log|1+t| + C \\
+&= \boldsymbol{
+    \log|1+\log x| + C \quad (C:\textbf{積分定数})}
+\end{align*}
+
+\begin{focusbox}
+\centering
+\textbf{$\log x \rightarrow$ 部分積分×
+$\rightarrow t = \log x$ と置換
+$\rightarrow$ 指数関数型へ}
+\end{focusbox}
+
+\end{document}

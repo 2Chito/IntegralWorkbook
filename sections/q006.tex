@@ -8,7 +8,7 @@
 
 \begin{mondai}{6}{今週の積分}{****}
     \begin{align*}
-        \int \frac{1}{\sqrt{1+x^2}} dx
+        \int \frac{1}{\sqrt{1+x^2}} \, dx
     \end{align*}
 \end{mondai}
 
@@ -21,15 +21,15 @@
 \Itembox{
     x=\frac{e^t-e^{-t}}{2} \qquad
     t=\log \left(x+\sqrt{x^2+1}\right) \qquad 
-    dx=\frac{e^t+e^{-t}}{2}dt
+    dx=\frac{e^t+e^{-t}}{2} \, dt
 }
 \begin{align*}
-    \int \frac{1}{\sqrt{1+x^2}} dx
-        &= \int \frac{1}{\sqrt{1+\frac{\left(e^t-e^{-t}\right)^2}{4}}} \frac{e^t+e^{-t}}{2}dt \\
-        &= \int \frac{1}{\frac{e^t+e^{-t}}{2}}\frac{e^t+e^{-t}}{2} dt \\
-        &= \int dt \\
-        &= t+\mathbb{C} \\
-        &= \boldsymbol{\log \left(x+\sqrt{x^2+1}\right)+\mathbb{C}}
+    \int \frac{1}{\sqrt{1+x^2}} \, dx
+        &= \int \frac{1}{\sqrt{1+\frac{\left(e^t-e^{-t}\right)^2}{4}}} \frac{e^t+e^{-t}}{2} \, dt \\
+        &= \int \frac{1}{\frac{e^t+e^{-t}}{2}}\frac{e^t+e^{-t}}{2} \, dt \\
+        &= \int \, dt \\
+        &= t+C \\
+        &= \boldsymbol{\log \left(x+\sqrt{x^2+1}\right)+C \quad (C:\textbf{積分定数})}
 \end{align*}
 
 \begin{focusbox}
