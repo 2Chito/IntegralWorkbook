@@ -10,12 +10,13 @@
     paper=a4,
     fontsize=11pt,
     disablejfam,
-    head_space=30mm,
-    foot_space=30mm,
-    gutter=25mm,
-    fore-edge=25mm,
+    head_space=20mm,
+    foot_space=20mm,
+    gutter=20mm,
+    fore-edge=20mm,
     linegap=1zw,
-    report]
+    report,
+    twoside]
     {jlreq}
 
 
@@ -40,7 +41,18 @@
 \RequirePackage{indentfirst} % 最初の段落でインデントするためのパッケージ
 \RequirePackage{framed} % 囲み付き文章を出すためのパッケージ
 \RequirePackage{type1cm} % 文字の大きさを自由に変えるためのパッケージ
+\RequirePackage{fancyhdr}
 
+% -------------------------------
+% ページスタイルのカスタマイズ
+% -------------------------------
+\setlength{\headheight}{22pt}
+\pagestyle{fancy}
+\fancyhf{} % ヘッダー・フッターを初期化
+\fancyhead[LE]{\thepage} % 偶数ページ（左）→左上にページ番号
+\fancyhead[RO]{\thepage} % 奇数ページ（右）→右上にページ番号
+\renewcommand{\headrulewidth}{0pt} % ヘッダー下線なし
+\renewcommand{\footrulewidth}{0pt} % フッター線なし
 
 \ifluatex
     % LuaTeXを日本語で使うための設定
@@ -213,6 +225,13 @@
       at (frame.north east) {#3};
     % 点線
     \draw[very thick, dotted] ([xshift=5mm,yshift=-11mm]frame.north west) -- ([xshift=-5mm,yshift=-11mm]frame.north east);
+    % 縦書きラベル「解説動画」の配置
+    \node[xshift=-25mm, yshift=11mm, font=\gtfamily\scriptsize] at (frame.south east)  {解};
+    \node[xshift=-25mm, yshift=8.1mm, font=\gtfamily\scriptsize] at (frame.south east)  {説};
+    \node[xshift=-25mm, yshift=5.3mm, font=\gtfamily\scriptsize] at (frame.south east)  {動};
+    \node[xshift=-25mm, yshift=2.5mm, font=\gtfamily\scriptsize] at (frame.south east)  {画};
+    \node[xshift=-21mm, yshift=6.7mm, font=\gtfamily] at (frame.south east)  {▶};
+
     % QRコード（右下）
     \node[anchor=south east, xshift=-7mm, yshift=0.5mm] at (frame.south east) {\qrcode[height=1.0cm]{#4}};
   },
@@ -227,7 +246,7 @@
     \par\noindent
     \begin{tblr}{
         width = \linewidth,
-        colspec = {Q[l,m,font=\bfseries] | p{130mm}},
+        colspec = {Q[l,m,font=\gtfamily] | p{130mm}},
         vline{2} = {2pt, solid},
     }
         考え方 ▶ & \centering #1 \\
@@ -242,7 +261,7 @@
     \begin{tikzpicture}[baseline=(char.base)]
     
         % --- 背景の五角形を手作業で描画 ---
-        \fill[black!60,rounded corners=2pt]
+        \fill[top color=gray!10,bottom color=gray!150,rounded corners=2pt]
             (2.5em, 0em)  -- % 1. 右端の頂点（矢印の先端）
             (1.7em, 1.0em)  -- % 2. 右上の頂点
             (-1.0em, 1.0em) -- % 3. 左上の頂点
@@ -252,7 +271,7 @@
             
         % --- 「解」の文字を上から重ねる ---
         % テキストを置くだけの、オプションが非常に少ないシンプルなnode
-        \node[text=white, font=\Large\bfseries] (char) at (0.2,0) {解};
+        \node[text=white, font=\Large\gtfamily] (char) at (0.2,0) {解};
         
     \end{tikzpicture}
 }
