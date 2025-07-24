@@ -92,6 +92,7 @@
 \RequirePackage[most]{tcolorbox}
 \RequirePackage[dvipsnames, svgnames]{xcolor}
 \RequirePackage{pagecolor}
+\RequirePackage{qrcode}
 
 % \DeclareFieldFormat*{journaltitle}{\textit{#1}} % 日本語雑誌名を通常に、英語雑誌名を斜体に
 % \DeclareFieldFormat*{title}{\textit{#1}}
@@ -180,8 +181,9 @@
 \usetikzlibrary{tikzmark}
 \usetikzlibrary{shapes.misc}
 \usetikzlibrary{calc}
+\usetikzlibrary{shadows}
 
-\newtcolorbox{mondai}[3]{% #1=番号, #2=単元名, #3=難易度
+\newtcolorbox{mondai}[4]{% #1=番号, #2=単元名, #3=難易度, #4=URL
   enhanced,
   breakable,
   colback=white,
@@ -195,7 +197,13 @@
   bottom=3pt,
   left=5pt,
   right=5pt,
+  drop shadow={
+    shadow xshift=2mm,
+    shadow yshift=-2mm,
+    opacity=0.3
+  },
   overlay={
+    % タイトル表示
     \node[anchor=north west, font=\gtfamily\large] at ([xshift=7mm,yshift=-2mm]frame.north west) {例 題};
     \node[anchor=north west, font=\gtfamily\huge\selectfont, text width=1.3cm, align=center, fill=black!20, inner sep=2.7mm] 
       at ([xshift=23mm,yshift=-0.2mm]frame.north west) {#1};
@@ -205,6 +213,8 @@
       at (frame.north east) {#3};
     % 点線
     \draw[very thick, dotted] ([xshift=5mm,yshift=-11mm]frame.north west) -- ([xshift=-5mm,yshift=-11mm]frame.north east);
+    % QRコード（右下）
+    \node[anchor=south east, xshift=-7mm, yshift=0.5mm] at (frame.south east) {\qrcode[height=1.0cm]{#4}};
   },
   valign=top,
   before upper={\par\vspace{1.2em}},
