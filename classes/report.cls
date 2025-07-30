@@ -49,8 +49,8 @@
 \setlength{\headheight}{22pt}
 \pagestyle{fancy}
 \fancyhf{} % ヘッダー・フッターを初期化
-\fancyhead[LE]{\thepage} % 偶数ページ（左）→左上にページ番号
-\fancyhead[RO]{\thepage} % 奇数ページ（右）→右上にページ番号
+\fancyhead[LE]{\large\thepage} % 偶数ページ（左）→左上にページ番号
+\fancyhead[RO]{\large\thepage} % 奇数ページ（右）→右上にページ番号
 \renewcommand{\headrulewidth}{0pt} % ヘッダー下線なし
 \renewcommand{\footrulewidth}{0pt} % フッター線なし
 
@@ -244,6 +244,7 @@
 % 使い方： \approachitem{ここに右側の列の文章を入れる}
 \newcommand{\approachitem}[1]{%
     \par\noindent
+    \hspace*{-3mm}
     \begin{tblr}{
         width = \linewidth,
         colspec = {Q[l,m,font=\gtfamily] | p{130mm}},
@@ -257,7 +258,7 @@
 \newcommand{\solutionhead}{%
     \vspace{3mm}
     \noindent
-    \hspace{1mm}
+    % \hspace{1mm}
     \begin{tikzpicture}[baseline=(char.base)]
     
         % --- 背景の五角形を手作業で描画 ---
@@ -319,23 +320,23 @@
   before skip=10pt,
   after skip=10pt,
   sharp corners,
-  width=\dimexpr\linewidth-4mm\relax,
-  enlarge left by=4mm, % 左に4mm余白
+  width=\dimexpr\linewidth-4.8mm\relax,
+  enlarge left by=4.8mm, % 左に4mm余白
   fontupper=\sffamily,
   overlay={
     % F：赤背景 + 下右の黒線
-    \node[anchor=south west, fill=red!70, text=white, font=\rmfamily,
-          minimum width=4mm, minimum height=4mm, inner sep=1pt,
+    \node[anchor=south west, fill=red!70, text=white, font=\large\rmfamily,
+          minimum width=5mm, minimum height=5mm, inner sep=1pt,
           path picture={
             \draw[line width=1.5pt, black]
               (path picture bounding box.south west) -- (path picture bounding box.south east);
             \draw[line width=1.5pt, black]
               (path picture bounding box.south east) -- (path picture bounding box.north east);
           }]
-          at ([xshift=-3.8mm, yshift=-0.35mm]frame.north west) {F};
+          at ([xshift=-4.8mm, yshift=-0.35mm]frame.north west) {F};
 
     % ocus文字
     \node[anchor=base west, font=\rmfamily, text=black]
-          at ([xshift=-1mm, yshift=0.5mm]frame.north west) {ocus};
+          at ([xshift=-0.8mm, yshift=0.5mm]frame.north west) {ocus};
   },
 }
