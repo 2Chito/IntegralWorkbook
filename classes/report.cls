@@ -49,8 +49,8 @@
 \setlength{\headheight}{22pt}
 \pagestyle{fancy}
 \fancyhf{} % ヘッダー・フッターを初期化
-\fancyhead[LE]{\large\thepage} % 偶数ページ（左）→左上にページ番号
-\fancyhead[RO]{\large\thepage} % 奇数ページ（右）→右上にページ番号
+\fancyhead[LE]{\raisebox{0mm}{\large\thepage}} % 偶数ページ（左）→左上にページ番号
+\fancyhead[RO]{\raisebox{0mm}{\large\thepage}} % 奇数ページ（右）→右上にページ番号
 \renewcommand{\headrulewidth}{0pt} % ヘッダー下線なし
 \renewcommand{\footrulewidth}{0pt} % フッター線なし
 

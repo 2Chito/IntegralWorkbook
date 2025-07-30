@@ -32,6 +32,10 @@
     \centering
     % 座標系のスケールを調整して見やすくする
     \begin{tikzpicture}[x=2cm, y=2cm]
+        % ★★★ 1からeの範囲で領域を塗りつぶす ★★★
+        % グラフの線を描く前に塗りつぶしを行う
+        \fill[blue!20] (1,0) -- plot[domain=1:2.718, smooth, variable=\x] ({\x}, {sqrt(\x)*ln(\x)}) -- (2.718,0) -- cycle;
+
         % --- 座標軸の描画 ---
         \draw[->, thick] (-0.2,0) -- (3.2,0) node[below] {$x$};
         \draw[->, thick] (0,-1) -- (0,2) node[left] {$y$};
@@ -53,10 +57,6 @@
         \draw (2pt, -1) -- (-2pt, -1) node[left] {$-1$};
         \draw (2pt, 1.65) -- (-2pt, 1.65) node[left] {$\sqrt{e}$};
         \draw (2pt, -0.736) -- (-2pt, -0.736) node[left] {$-\frac{2}{e}$};
-
-        % ★★★ 1. 1からeの範囲で領域を塗りつぶす ★★★
-        % グラフの線を描く前に塗りつぶしを行う
-        \fill[blue!20] (1,0) -- plot[domain=1:2.718, smooth, variable=\x] ({\x}, {sqrt(\x)*ln(\x)}) -- (2.718,0) -- cycle;
 
         % --- 関数のプロット ---
         % 【注意】log(0)は定義されないため、0より少し大きい値から開始

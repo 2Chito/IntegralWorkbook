@@ -38,6 +38,10 @@
     \centering
     \begin{minipage}[t]{0.45\linewidth}
     \begin{tikzpicture}[scale=1.5]
+        % ★★★ 1. 0からπまでの領域を塗りつぶす ★★★
+        % グラフの線を描く前に塗りつぶしを行う
+        \fill[blue!20] (pi/2,0) -- plot[domain=pi/2:pi, smooth, variable=\x] ({\x}, {sin(\x r)}) -- (pi,0) -- cycle;
+        
         % --- 座標軸 ---
         \draw[->, thick] (-0.2,0) -- (4,0) node[below] {$x$};
         \draw[->, thick] (0,-0.2) -- (0,2) node[left] {$y$};
@@ -55,10 +59,6 @@
         % y軸
         \draw (2pt, 1) -- (-2pt, 1) node[left] {$1$};
         \draw (2pt, 1.414) -- (-2pt, 1.414) node[left] {$\sqrt{2}$};
-
-        % ★★★ 1. 0からπまでの領域を塗りつぶす ★★★
-        % グラフの線を描く前に塗りつぶしを行う
-        \fill[blue!20] (pi/2,0) -- plot[domain=pi/2:pi, smooth, variable=\x] ({\x}, {sin(\x r)}) -- (pi,0) -- cycle;
 
         % --- 正弦波のプロット ---
         % 【重要】TikZのsin()は角度(度)を引数に取るため、
@@ -83,6 +83,10 @@
   \begin{minipage}[t]{0.45\linewidth}
     \centering
     \begin{tikzpicture}[scale=1.5]
+        % ★★★ 1. 0からπまでの領域を塗りつぶす ★★★
+        % グラフの線を描く前に塗りつぶしを行う
+        \fill[red!20] (0,0) -- plot[domain=0:pi, smooth, variable=\x] ({\x}, {sqrt(1+cos(\x r))}) -- (pi,0) -- cycle;
+
         % --- 座標軸 ---
         \draw[->, thick] (-0.2,0) -- (4,0) node[below] {$x$};
         \draw[->, thick] (0,-0.2) -- (0,2) node[left] {$y$};
@@ -100,10 +104,6 @@
         % y軸
         \draw (2pt, 1) -- (-2pt, 1) node[left] {$1$};
         \draw (2pt, 1.414) -- (-2pt, 1.414) node[left] {$\sqrt{2}$};
-
-        % ★★★ 1. 0からπまでの領域を塗りつぶす ★★★
-        % グラフの線を描く前に塗りつぶしを行う
-        \fill[red!20] (0,0) -- plot[domain=0:pi, smooth, variable=\x] ({\x}, {sqrt(1+cos(\x r))}) -- (pi,0) -- cycle;
 
         % --- グラフのプロット ---
         % 【重要】cos()も度数法のため、ラジアンの \x に 'r' をつけて変換
