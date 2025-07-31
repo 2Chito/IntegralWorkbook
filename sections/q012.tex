@@ -1,0 +1,44 @@
+%! TEX root = ../main.tex
+\documentclass[main]{subfiles}
+
+\begin{document}
+\silentchapter{\texorpdfstring
+{$\sqrt{\phantom{x}}\rightarrow$  基本的には外す}
+{}}
+
+\begin{mondai}{12}{今週の積分}{**}{https://youtu.be/7ThUG6oHXNY?si=LH6PeGBULvDDruHu}
+    \begin{align*}
+        \int \frac{1}{x - \sqrt{x}} dx
+    \end{align*}
+\end{mondai}
+
+\approachitem{$\sqrt{x}$とその微分である$\frac{1}{\sqrt{x}}$が式に含まれることに注目し，置換積分する．}
+
+\solutionhead
+\hfill
+以下に計算手順を示す.
+\hfill\
+
+\begin{align*}
+\int \frac{1}{x - \sqrt{x}} dx = \int \frac{1}{\sqrt{x}(\sqrt{x}-1)} dx \\
+\end{align*}
+
+\Itembox{
+    t = \sqrt{x} \qquad 
+    dt = \frac{1}{2\sqrt{x}} dx \qquad 
+    \therefore dx = 2t \, dt
+}
+
+\begin{align*}
+&= \int \frac{1}{t(t-1)} \cdot 2t \, dt \\
+&= \int \frac{2}{t-1} dt \\
+&= 2\log|t-1| + C \\
+&= \boldsymbol{2\log|\sqrt{x}-1| + C \quad (C:\textbf{積分定数})}
+\end{align*}
+
+\begin{focusbox}
+\centering
+\textbf{$\sqrt{\phantom{x}}\rightarrow$  基本的には外す}
+\end{focusbox}
+
+\end{document}
