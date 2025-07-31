@@ -221,19 +221,20 @@
       at ([xshift=23mm,yshift=-0.2mm]frame.north west) {#1};
     \node[anchor=north west, font=\gtfamily\large, text width=10cm] 
       at ([xshift=45mm,yshift=-2mm]frame.north west) {#2};
-    \node[anchor=north east, font=\Huge, xshift=-7mm, yshift=-2mm] 
+    \node[anchor=north east, font=\Huge, xshift=-26mm, yshift=-2mm] 
       at (frame.north east) {#3};
     % 点線
-    \draw[very thick, dotted] ([xshift=5mm,yshift=-11mm]frame.north west) -- ([xshift=-5mm,yshift=-11mm]frame.north east);
+    \draw[very thick, dotted] ([xshift=5mm,yshift=-11mm]frame.north west) -- ([xshift=-24mm,yshift=-11mm]frame.north east);
     % 縦書きラベル「解説動画」の配置
-    \node[xshift=-25mm, yshift=11mm, font=\gtfamily\scriptsize] at (frame.south east)  {解};
-    \node[xshift=-25mm, yshift=8.1mm, font=\gtfamily\scriptsize] at (frame.south east)  {説};
-    \node[xshift=-25mm, yshift=5.3mm, font=\gtfamily\scriptsize] at (frame.south east)  {動};
-    \node[xshift=-25mm, yshift=2.5mm, font=\gtfamily\scriptsize] at (frame.south east)  {画};
-    \node[xshift=-21mm, yshift=6.7mm, font=\gtfamily] at (frame.south east)  {▶};
+    \node[xshift=-15.7mm, yshift=-4mm, font=\gtfamily] at (frame.north east)  {解};
+    \node[xshift=-11.8mm, yshift=-4mm, font=\gtfamily] at (frame.north east)  {説};
+    \node[xshift=-7.9mm, yshift=-4mm, font=\gtfamily] at (frame.north east)  {動};
+    \node[xshift=-4mm, yshift=-4mm, font=\gtfamily] at (frame.north east)  {画};
 
     % QRコード（右下）
-    \node[anchor=south east, xshift=-7mm, yshift=0.5mm] at (frame.south east) {\qrcode[height=1.0cm]{#4}};
+    \node[anchor=south east, xshift=-1mm, yshift=1mm] at (frame.south east) {\qrcode[height=1.5cm]{#4}};
+    \draw[thick, rounded corners=3.5pt]($(frame.north east) + (-0.1,-0.02)$) -- ($(frame.north east) + (-1.98,-0.02)$) -- ($(frame.south east) + (-1.98,0.02)$) -- ($(frame.south east) + (-0.1,0.02)$);
+
   },
   valign=top,
   before upper={\par\vspace{1.2em}},
